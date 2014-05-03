@@ -1,0 +1,68 @@
+<!--
+    CampusRoster
+    Copyright (C) <2013> <Riju M>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+-->
+<!doctype html>
+<html>
+<head><title>GCELT1014/CampusRoster/View</title>
+<link href="../style/style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="../css/jquery-ui.custom.min.css" />
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery-ui.custom.min.js"></script>
+
+<script>
+$(function() {
+$( "#tabs" ).tabs();
+});
+
+function toTab(x){
+document.getElementById(x).click();
+}
+
+function getMsgCount(){
+$.ajax({ type: "GET", url: "msgcount.php"}).done(function(x){if(x=="F"){}else{document.getElementById('mc').innerHTML="<b>"+x+"</b> new"}});
+}
+</script>
+</head>
+<body onload="getMsgCount()">
+<div class="banner">GCELT1014/CampusRoster</div>
+<br>
+<div class="nav">
+<span class="subhead">View Registrations</span>
+<br>
+<table>
+<tr><td><a href="view.php?st=cse"><b>CSE</b></a></td><td><a href="getcsv.php?st=cse" ><img width="20" height="20" src="../res/csv.gif"></a></td></tr>
+<tr><td><a href="view.php?st=it"><b>IT</b></a></td><td><a href="getcsv.php?st=it" ><img width="20" height="20" src="../res/csv.gif"></a></td></tr>
+<tr><td><a href="view.php?st=lt"><b>LT</b></a></td><td><a href="getcsv.php?st=lt"><img width="20" height="20" src="../res/csv.gif"></a></td></tr>
+</table>
+<br><br>
+<span class="subhead">Edit details</span>
+<table>
+<tr><td>University Roll</td><td><input type="text" placeholder="Roll" id="roll"/></td><td><input type="button" class="nextButton" onclick="window.open('edit.php?r='+document.getElementById('roll').value,'_blank');" value="Edit"></td></tr>
+</table>
+<br><br>
+<span class="subhead">Messages</span>
+<br>
+<a href="msgs.php">Check messages</a><br><span id="mc"></span>
+<br><br>
+<span class="subhead">Monitors</span>
+<br>
+<a href="monitors.php">Perform monitoring actions</a><br>
+<br><br>
+</div>
+</body>
+</html>
