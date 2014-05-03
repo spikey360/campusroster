@@ -1,0 +1,287 @@
+<!--
+    CampusRoster
+    Copyright (C) <2013> <Riju M>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+-->
+<!doctype html>
+<html>
+<head><title>GCELT1014/CampusRoster</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link href="style/style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="css/jquery-ui.custom.min.css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="js/submit.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/preview.js"></script>
+<script>
+$(function() {
+$( "#tabs" ).tabs();
+$( document ).tooltip();
+});
+
+ $(function() {
+$( "#dialog" ).dialog({ autoOpen: false, minWidth: 400 });
+//$( "#dialog" ).dialog( "option", "hide", "explode" );
+});
+
+function showPreview(){
+$( '#dialog' ).dialog({ autoOpen: true, show:'slow' });
+}
+
+function toTab(x){
+document.getElementById(x).click();
+}
+
+ $(function() {
+$( "#dob" ).datepicker({
+changeMonth: true,
+changeYear: true,
+minDate: new Date(1984, 1 - 1, 26),
+maxDate: new Date(1994, 1 - 1, 31),
+dateFormat: "yy-mm-dd"
+});
+
+});
+
+</script>
+</head>
+
+<body onload="disableOtherBranch(true); toTab('tabFAQ');">
+<div class="container">
+<div class="banner">GCELT1014/CampusRoster</div>
+<div class="subbanner"><b>Information fill up for 2010-2014 batch</b></div>
+<br>
+<div class="cont">
+<div id="tabs">
+<ul>
+<li><a href="#tabs-1" id="tabBasic" >Basic</a></li>
+<li><a href="#tabs-4" id="tabContact">Contact</a></li>
+<li><a href="#tabs-3" id="tabAcademics">Academics</a></li>
+<li><a href="#tabs-5" id="tabExperience">Experience</a></li>
+<li><a href="#tabs-2" id="tabHistory">History</a></li>
+<li><a href="#tabs-6" id="tabFAQ">?</a></li>
+
+
+</ul>
+
+<div id="tabs-1">
+<table align="center">
+
+<tr><td>University roll number</td><td><input type="text" name="roll"  placeholder ="University roll number" autocomplete="off" size="11" id="roll"/></td>
+<tr><td>Candidate Name</td><td><input type="text" name="first" autocomplete="off" placeholder ="First  Middle  Last" size="20" id="name"/></td>
+ 
+
+<tr><td>
+Sex</td><td>
+Male<input type="radio" name="sex" value="Male" id="male" CHECKED/>
+Female<input type="radio" name="sex" value="Female" id="female"/>
+
+
+</td>
+</tr>
+<tr><td>
+Stream</td><td><select id="stream" name="--Stream--">
+<optgroup label="--Select--">
+<option value="CSE">CSE</option>
+<option value="IT">IT</option>
+<option value="LT">LT</option>
+</select>
+</td></tr>
+<tr><td>Date of birth</td><td><input type="text" name="dob"  placeholder ="Date of birth" autocomplete="off" id="dob"/></td></tr>
+</table>
+<div align="right"><input type="button" class="nextButton" value=">>" onclick="toTab('tabContact')"></div>
+</div>
+
+<div id="tabs-2">
+<table align="center">
+<tr><td>Xth std marks(%)</td><td><input type="text" name="xm"  placeholder ="Xth std marks(%)" autocomplete="off" size="4" id="p10"/></td></tr>
+<tr><td>Xth std board</td><td><select id="b10" name="stream">
+<option value="S">--Select--</option>
+<option value="WBBSE">WBBSE</option>
+<option value="CBSE">CBSE</option>
+<option value="ICSE">ICSE</option>
+<option value="OTHER">Other</option>
+</select>
+<input type="text" placeholder="(if Other)" title="Abbreviation only" id="o10" size="7">
+</td></tr>
+<tr><td>Xth std <u title="Year of Passing">YOP</u></td><td><input type="text" name="xy"  placeholder ="Xth std YOP" autocomplete="off" size="4" id="y10"/></td></tr>
+<tr><td>XIIth std marks(%)</td><td><input type="text" name="xiim"  placeholder ="XIIth std marks(%)" autocomplete="off" size="4" id="p12"/></td></tr>
+<tr><td>XIIth std board</td><td><select id="b12" name="stream">
+<option value="S">--Select--</option>
+<option value="WBCHSE">WBCHSE</option>
+<option value="CBSE">CBSE</option>
+<option value="ISC">ISC</option>
+<option value="OTHER">Other</option>
+</select>
+<input type="text" placeholder="(if Other)" title="Abbreviation only" id="o12" size="7">
+</td></tr>
+<tr><td>XIIth std <u title="Year of Passing">YOP</u></td><td><input type="text" name="xiiy"  placeholder ="XIIth std YOP" autocomplete="off" size="4" id="y12"/></td></tr>
+<tr><td>Category</td><td><input type="radio" name="entry" value="jee" id="jee" CHECKED onclick="disableOtherBranch(true)"/>WBJEE<input type="radio" name="entry" value="lat" id="lat" onclick="disableOtherBranch(false)" />Lateral
+</td></tr>
+<tr><td>Diploma %of marks (Lateral)</td><td><input type="text" name="dm"  placeholder ="%of marks (Diploma)" autocomplete="off" size="4" id="pDip"/></td></tr>
+<tr><td>Engg. Diploma board</td><td><input type="text" name="db"  placeholder ="Engg. Diploma board" autocomplete="off" id="bDip"/></td></tr>
+<tr><td>Engg. Diploma <u title="Year of Passing">YOP</u></td><td><input type="text" name="dy"  placeholder ="Engg. Diploma YOP" autocomplete="off" size="4" id="yDip"/></td></tr>
+<tr><td>WBJEE rank</td><td><input type="text" name="wbjee"  placeholder ="WBJEE rank" autocomplete="off" size="4" id="rWB"/></td></tr>
+<tr><td>JELET rank</td><td><input type="text" name="jelet"  placeholder ="JELET rank" autocomplete="off" size="4" id="rJEL"/></td></tr>
+</table>
+<div align="right"><input type="button" class="nextButton" value="<<" onclick="toTab('tabExperience')"><input type="button" class="nextButton" value="Preview" onclick="updatePreview(); showPreview();"></div>
+<br>
+<hr>
+<br>
+<div align="right">
+            <input type="button" class="submitButton" value="SUBMIT" onclick="submitDetails()" id="subButton">
+        </div>
+</div>
+
+<div id="tabs-3">
+<table align="center">
+<tr><td>Current backlog</td><td><input type="text" name="cb"  placeholder ="Current backlog" autocomplete="off" id="cb"/></td></tr>
+<tr><td>Previous backlog</td><td><input type="text" name="pb"  placeholder ="Previous backlog" autocomplete="off" id="pb"/></td></tr>
+<tr><td>1st sem SGPA1</td><td><input type="text" name="sem1"  placeholder ="1st sem SGPA1" autocomplete="off" size="3" id="p1" onchange="calcAvg()"/></td></tr>
+<tr><td>2nd sem SGPA2</td><td><input type="text" name="sem2"  placeholder ="2nd sem SGPA2" autocomplete="off" size="3" id="p2" onchange="calcAvg()"/></td></tr>
+<tr><td>3rd sem SGPA3</td><td><input type="text" name="sem3"  placeholder ="3rd sem SGPA3" autocomplete="off" size="3" id="p3" onchange="calcAvg()"/></td></tr>
+<tr><td>4th sem SGPA4</td><td><input type="text" name="sem4"  placeholder ="4th sem SGPA4" autocomplete="off" size="3" id="p4" onchange="calcAvg()"/></td></tr>
+<tr><td>5th sem SGPA5</td><td><input type="text" name="sem5"  placeholder ="5th sem SGPA5" autocomplete="off" size="3" id="p5" onchange="calcAvg()"/></td></tr>
+<tr><td>6th sem SGPA6</td><td><input type="text" name="sem6"  placeholder ="6th sem SGPA6" disabled autocomplete="off" size="3" id="p6" onchange="calcAvg()"/></td></tr>
+<tr><td>7th sem SGPA7</td><td><input type="text" name="sem7"  placeholder ="7th sem SGPA7" disabled autocomplete="off" size="3" id="p7" onchange="calcAvg()"/></td></tr>
+<tr><td>8th sem SGPA8</td><td><input type="text" name="sem8"  placeholder ="8th sem SGPA8" disabled autocomplete="off" size="3" id="p8" onchange="calcAvg()"/></td></tr>
+<tr><td>CGPA</td><td><input type="text" name="cgpa"  placeholder ="CGPA" autocomplete="off" size="3" id="cgpa" disabled/></td></tr>
+<tr><td>Avg sem</td><td><input type="text" name="avg"  placeholder ="Avg sem" autocomplete="off" size="3" id="avg"/></td></tr>
+</table>
+<div align="right"><input type="button" class="nextButton" value="<<" onclick="toTab('tabContact')"><input type="button" class="nextButton" value=">>" onclick="toTab('tabExperience')"></div>
+</div>
+
+<div id="tabs-4">
+<table align="center">
+<tr><td>Address1(permanent)</td><td><textarea placeholder="Permanent Residential address" id="add1"></textarea></td></tr>
+<tr><td>Address2(present)</td><td><textarea placeholder="Present address" id="add2"></textarea></td></tr>
+<tr><td>Contact number</td><td><input type="text" name="ph"  placeholder ="Phone number" autocomplete="off" size="10" id="ph"/></td></tr>
+<tr><td>email-id</td><td><input type="text" name="email"  placeholder ="email-id" autocomplete="off" id="mail"/></td></tr>
+<tr><td>Group mail-id</td><td><input type="text" name="gemail"  placeholder ="Group mail-id" autocomplete="off" /></td>
+</tr>
+</table>
+<div align="right"><input type="button" class="nextButton" value="<<" onclick="toTab('tabBasic')"><input type="button" class="nextButton" value=">>" onclick="toTab('tabAcademics')"></div>
+</div>
+
+<div id="tabs-5">
+<table align="center">
+<tr><td>Industrial Training</td><td><textarea placeholder="Where did you get Industrial training? Name and Specifics of Training"  id="trainDetails" >None Yet</textarea></td></tr>
+<tr><td>Duration(in weeks)</td><td><input type="text" name="dur"  placeholder ="Duration(in weeks)" autocomplete="off" id="trainWeeks" value="0"/></td></tr>
+</table>
+<div align="right"><input type="button" class="nextButton" value="<<" onclick="toTab('tabAcademics')"><input type="button" class="nextButton" value=">>" onclick="toTab('tabHistory')"></div>
+</div>
+
+<div id="tabs-6">
+<div class="subhead"><b>Welcome to GCELT1014/CampusRoster, the web app for registering to GCELT campus registrations this summer</b></div>
+<div>Naturally, you may have some questions..</div>
+<br>
+<div><b>Help! What's this? Why an app for registration? What happened to pen and paper?</b>
+<br>
+This year, we have decided to do away with pen and paper registrations as it is cumbersome and prone to a lot of human errors. This app is an effort to simplify the registration process. Register from anywhere! Your home, at college or from your mobile device. There are no limits.<br><br>
+<b>But is this genuine? Will I really be registered by only filling the fields?</b><br>
+Yes. You definitely will be. You can verify that with our people in charge of the matter.<br><br>
+<b>OK, do I have to fill all the tabs and fields?</b><br>
+<b>Yes</b>. Most fields are compulsory. You have to fill <u title="Some fields like Group-mail are optional. WBJEE students don't need to fill Diploma details">almost all</u> of them. So make sure you have filled in everything before you press <b>SUBMIT</b>.<br><br>
+<b>I think I have filled in everything, but still cannot Submit. Why?</b><br>
+You have certainly missed something. When you don't fill up a compulsory detail, the app will ask you for it and open the relevant tab. You will be given a hint about the missing field, do fill it up. If you still have problems, contact us.<br><br>
+<b>I have provided a wrong detail. What do I do?</b><br>
+Get in touch with our people in charge immediately. They will fix the problem for you. Mail us at <u>gcelt.1014@gmail.com</u><br><br>
+<b>Useful instructions</b><br>
+While calculating Xth standard boards marks, determine percentage by taking into account all subjects (including all language papers & additional paper, if any, except the Environmental paper).
+<br>
+While calculating the XIIth standard board marks, determine percentage by taking into account of "Best of 5" method (except taking the Environmental paper under consideration).
+<br>
+The 6th, 7th, 8th Sem SGPA and the CGPA are not required to be filled.
+<br>
+Calculate average GPA by averaging the GPAs you have till now, giving equal weightage to each semester.
+<br><br>
+<b>Happy?</b> Let's <input type="button" class="nextButton" value="Start!" onclick="toTab('tabBasic')">
+</div>
+</div>
+</div>
+</div>
+
+<div id="dialog" title="Preview">
+<p>Your details so far..
+<hr>
+<table class="previewTable">
+<tr><td>Roll</td><td><span id="pvRoll"></span></td></tr>
+<tr><td>Name</td><td><span id="pvName"></span></td></tr>
+<tr><td>Sex</td><td><span id="pvSex"></span></td></tr>
+<tr><td>Stream</td><td><span id="pvStream"></span></td></tr>
+<tr><td>DOB</td><td><span id="pvDob"></span></td></tr>
+</table>
+<hr>
+<table class="previewTable">
+<tr><td>Permanent Address</td><td><span id="pvAdd1"></span></td></tr>
+<tr><td>Present Address</td><td><span id="pvAdd2"></span></td></tr>
+<tr><td>Phone</td><td><span id="pvPh"></span></td></tr>
+<tr><td>Mail</td><td><span id="pvMail"></span></td></tr>
+</table>
+<hr>
+<table class="previewTable">
+<tr><td>Past backlogs</td><td><span id="pvPb"></span></td></tr>
+<tr><td>Present backlogs</td><td><span id="pvCb"></span></td></tr>
+<tr><td>SGPA1</td><td><span id="pvP1"></span></td></tr>
+<tr><td>SGPA2</td><td><span id="pvP2"></span></td></tr>
+<tr><td>SGPA3</td><td><span id="pvP3"></span></td></tr>
+<tr><td>SGPA4</td><td><span id="pvP4"></span></td></tr>
+<tr><td>SGPA5</td><td><span id="pvP5"></span></td></tr>
+<tr><td>SGPA6</td><td><span id="pvP6"></span></td></tr>
+<tr><td>SGPA7</td><td><span id="pvP7"></span></td></tr>
+<tr><td>SGPA8</td><td><span id="pvP8"></span></td></tr>
+<tr><td>CGPA</td><td><span id="pvCgpa"></span></td></tr>
+<tr><td>Avg</td><td><span id="pvAvg"></span></td></tr>
+</table>
+<hr>
+<table class="previewTable">
+<tr><td>Industrial Training</td><td><span id="pvTd"></span></td></tr>
+<tr><td>Duration</td><td><span id="pvTw"></span></td></tr>
+</table>
+<hr>
+<table class="previewTable">
+<tr><td>X %</td><td><span id="pvP10"></span></td></tr>
+<tr><td>X Board</td><td><span id="pvB10"></span></td></tr>
+<tr><td>X Year</td><td><span id="pvY10"></span></td></tr>
+<tr><td>XII %</td><td><span id="pvP12"></span></td></tr>
+<tr><td>XII Board</td><td><span id="pvB12"></span></td></tr>
+<tr><td>XII Year</td><td><span id="pvY12"></span></td></tr>
+<tr><td>Diploma %</td><td><span id="pvPDip"></span></td></tr>
+<tr><td>Diploma board</td><td><span id="pvBDip"></span></td></tr>
+<tr><td>Diploma year</td><td><span id="pvYDip"></span></td></tr>
+<tr><td>WBJEE rank</td><td><span id="pvRWB"></span></td></tr>
+<tr><td>JELET rank</td><td><span id="pvRJEL"></span></td></tr>
+</table>
+</p>
+
+</div>
+
+
+<br><br>
+
+<div align="center" id="status"></div>
+</form>
+<br><br><br>
+<br><br><br>
+<div class="footer"><br>
+<div align="center">Created by <u title="Concept, Design, Layout, Backends"><a href="mailto:spikey360beta@gmail.com">Riju Modak</a></u> and <u title="Concept, Inputs">Pracheta Sahoo</u>. All Rights Reserved. &#169; 2013
+<div><a href="#">Desktop</a>|<a href="./m/">Mobile</a></div>
+</div>
+</div>
+</div>
+</body>
+</html>
