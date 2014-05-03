@@ -27,6 +27,7 @@
 <script src="js/submit.js"></script>
 <script src="js/validate.js"></script>
 <script src="js/preview.js"></script>
+<script src="js/address.js"></script>
 <script>
 $(function() {
 $( "#tabs" ).tabs();
@@ -38,8 +39,24 @@ $( "#dialog" ).dialog({ autoOpen: false, minWidth: 400 });
 //$( "#dialog" ).dialog( "option", "hide", "explode" );
 });
 
+$(function() {
+$( "#residAddress" ).dialog({ autoOpen: false, minWidth: 400 });
+});
+
+$(function() {
+$( "#corresAddress" ).dialog({ autoOpen: false, minWidth: 400 });
+});
+
 function showPreview(){
 $( '#dialog' ).dialog({ autoOpen: true, show:'slow' });
+}
+
+function showAddress(){
+$( '#residAddress' ).dialog({ autoOpen: true, show:'slow' });
+}
+
+function showCorresAddress(){
+$( '#corresAddress' ).dialog({ autoOpen: true, show:'slow' });
 }
 
 function toTab(x){
@@ -82,7 +99,9 @@ dateFormat: "yy-mm-dd"
 <table align="center">
 
 <tr><td>University roll number</td><td><input type="text" name="roll"  placeholder ="University roll number" autocomplete="off" size="11" id="roll"/></td>
-<tr><td>Candidate Name</td><td><input type="text" name="first" autocomplete="off" placeholder ="First  Middle  Last" size="20" id="name"/></td>
+<tr><td>Candidate Name</td><td><input type="text" name="first" autocomplete="off" placeholder ="First" size="8" id="name"/>
+<input type="text" name="first" autocomplete="off" placeholder ="Middle" size="8" id="middleName"/>
+<input type="text" name="first" autocomplete="off" placeholder ="Last" size="8" id="surname"/></td>
  
 
 <tr><td>
@@ -167,12 +186,10 @@ Stream</td><td><select id="stream" name="--Stream--">
 
 <div id="tabs-4">
 <table align="center">
-<tr><td>Address1(permanent)</td><td><textarea placeholder="Permanent Residential address" id="add1"></textarea></td></tr>
-<tr><td>Address2(present)</td><td><textarea placeholder="Present address" id="add2"></textarea></td></tr>
-<tr><td>Contact number</td><td><input type="text" name="ph"  placeholder ="Phone number" autocomplete="off" size="10" id="ph"/></td></tr>
-<tr><td>email-id</td><td><input type="text" name="email"  placeholder ="email-id" autocomplete="off" id="mail"/></td></tr>
-<tr><td>Group mail-id</td><td><input type="text" name="gemail"  placeholder ="Group mail-id" autocomplete="off" /></td>
-</tr>
+<tr><td>Residential</td><td><input type="button" onclick="showAddress()" value="Edit.."></td></tr>
+<tr><td>Correspondence</td><td><input type="checkbox" onclick="toggleCorrespondence();">Same as residential address<br><input type="button" onclick="showCorresAddress()" value="Edit.." id="editCorresAddress"></td></tr>
+<tr><td>Contact number</td><td><input type="tel" name="ph"  placeholder ="Phone number" autocomplete="off" size="10" id="ph"/></td></tr>
+<tr><td>email-id</td><td><input type="email" name="email"  placeholder ="email-id" autocomplete="off" id="mail"/></td></tr>
 </table>
 <div align="right"><input type="button" class="nextButton" value="<<" onclick="toTab('tabBasic')"><input type="button" class="nextButton" value=">>" onclick="toTab('tabAcademics')"></div>
 </div>
@@ -270,6 +287,25 @@ Calculate average GPA by averaging the GPAs you have till now, giving equal weig
 
 </div>
 
+<div id="residAddress" title="Residential address">
+<input type="text" size="4" autocomplete="off" placeholder="House#">
+<br><input type="text" size="20" placeholder="Street" autocomplete="off">
+<br><input type="text" size="10" placeholder="Locality" autocomplete="off">
+<br><input type="text" size="12" placeholder="City/Town/Village" autocomplete="off">
+<br><input type="text" size="10" placeholder="District" autocomplete="off">
+<br><input type="text" size="11" placeholder="State" autocomplete="off">
+<br><input type="text" size="6" placeholder="Pin" autocomplete="off">
+</div>
+
+<div id="corresAddress" title="Correspondence address">
+<input type="text" size="4" autocomplete="off" placeholder="House#">
+<br><input type="text" size="20" placeholder="Street" autocomplete="off">
+<br><input type="text" size="10" placeholder="Locality" autocomplete="off">
+<br><input type="text" size="12" placeholder="City/Town/Village" autocomplete="off">
+<br><input type="text" size="10" placeholder="District" autocomplete="off">
+<br><input type="text" size="11" placeholder="State" autocomplete="off">
+<br><input type="text" size="6" placeholder="Pin" autocomplete="off">
+</div>
 
 <br><br>
 
