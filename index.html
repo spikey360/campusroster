@@ -178,14 +178,14 @@ Stream</td><td><select id="stream" name="--Stream--">
 <table align="center">
 <tr><td>Current backlog</td><td><input type="text" name="cb"  placeholder ="Current backlog" autocomplete="off" id="cb"/></td></tr>
 <tr><td>Previous backlog</td><td><input type="text" name="pb"  placeholder ="Previous backlog" autocomplete="off" id="pb"/></td></tr>
-<tr><td>1st sem SGPA1</td><td><input type="text" name="sem1"  placeholder ="1st sem SGPA1" autocomplete="off" size="3" id="p1" onchange="calcAvg()"/></td></tr>
-<tr><td>2nd sem SGPA2</td><td><input type="text" name="sem2"  placeholder ="2nd sem SGPA2" autocomplete="off" size="3" id="p2" onchange="calcAvg()"/></td></tr>
-<tr><td>3rd sem SGPA3</td><td><input type="text" name="sem3"  placeholder ="3rd sem SGPA3" autocomplete="off" size="3" id="p3" onchange="calcAvg()"/></td></tr>
-<tr><td>4th sem SGPA4</td><td><input type="text" name="sem4"  placeholder ="4th sem SGPA4" autocomplete="off" size="3" id="p4" onchange="calcAvg()"/></td></tr>
-<tr><td>5th sem SGPA5</td><td><input type="text" name="sem5"  placeholder ="5th sem SGPA5" autocomplete="off" size="3" id="p5" onchange="calcAvg()"/></td></tr>
-<tr><td>6th sem SGPA6</td><td><input type="text" name="sem6"  placeholder ="6th sem SGPA6" disabled autocomplete="off" size="3" id="p6" onchange="calcAvg()"/></td></tr>
-<tr><td>7th sem SGPA7</td><td><input type="text" name="sem7"  placeholder ="7th sem SGPA7" disabled autocomplete="off" size="3" id="p7" onchange="calcAvg()"/></td></tr>
-<tr><td>8th sem SGPA8</td><td><input type="text" name="sem8"  placeholder ="8th sem SGPA8" disabled autocomplete="off" size="3" id="p8" onchange="calcAvg()"/></td></tr>
+<tr><td>1st sem SGPA1</td><td><input type="text" name="sem1" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="1st sem SGPA1" autocomplete="off" size="3" id="p1" onchange="calcAvg()"/></td></tr>
+<tr><td>2nd sem SGPA2</td><td><input type="text" name="sem2" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="2nd sem SGPA2" autocomplete="off" size="3" id="p2" onchange="calcAvg()"/></td></tr>
+<tr><td>3rd sem SGPA3</td><td><input type="text" name="sem3" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="3rd sem SGPA3" autocomplete="off" size="3" id="p3" onchange="calcAvg()"/></td></tr>
+<tr><td>4th sem SGPA4</td><td><input type="text" name="sem4" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="4th sem SGPA4" autocomplete="off" size="3" id="p4" onchange="calcAvg()"/></td></tr>
+<tr><td>5th sem SGPA5</td><td><input type="text" name="sem5" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="5th sem SGPA5" autocomplete="off" size="3" id="p5" onchange="calcAvg()"/></td></tr>
+<tr><td>6th sem SGPA6</td><td><input type="text" name="sem6" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="6th sem SGPA6" autocomplete="off" size="3" id="p6" onchange="calcAvg()"/></td></tr>
+<tr><td>7th sem SGPA7</td><td><input type="text" name="sem7" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="7th sem SGPA7" autocomplete="off" size="3" id="p7" onchange="calcAvg()"/></td></tr>
+<tr><td>8th sem SGPA8</td><td><input type="text" name="sem8" pattern="[0-9]{1}[\\.]{1}[0-9]{2}|[0-9]{1}[\\.]{1}[0-9]{1}|[0-9]{1}" placeholder ="8th sem SGPA8" disabled autocomplete="off" size="3" id="p8" onchange="calcAvg()"/></td></tr>
 <tr><td>CGPA</td><td><input type="text" name="cgpa"  placeholder ="CGPA" autocomplete="off" size="3" id="cgpa" disabled/></td></tr>
 <tr><td>Avg sem</td><td><input type="text" name="avg"  placeholder ="Avg sem" autocomplete="off" size="3" id="avg"/></td></tr>
 </table>
@@ -196,8 +196,8 @@ Stream</td><td><select id="stream" name="--Stream--">
 <table align="center">
 <tr><td>Residential</td><td><textarea id="add1" readonly></textarea><br><input type="button" onclick="showAddress()" value="Edit.."></td></tr>
 <tr><td>Correspondence</td><td><textarea id="add2" readonly></textarea><br><input type="checkbox" onclick="toggleCorrespondence();">Same as residential address<br><input type="button" onclick="showCorresAddress()" value="Edit.." id="editCorresAddress"></td></tr>
-<tr><td>Contact number</td><td><input type="tel" name="ph"  placeholder ="Phone number" autocomplete="off" size="10" id="ph"/></td></tr>
-<tr><td>email-id</td><td><input type="email" name="email"  placeholder ="email-id" autocomplete="off" id="mail"/></td></tr>
+<tr><td>Contact number</td><td><input type="tel" name="ph" pattern="[0-9]{10}|[0-9]{8}" placeholder ="Phone number" autocomplete="off" size="10" id="ph"/></td></tr>
+<tr><td>email-id</td><td><input type="email" name="email"  pattern="[a-z0-9]*[@]{1}[a-z0-9]*[\\.]{1}[a-z]{3}|[a-z0-9]*[@]{1}[a-z0-9]*[\\.]{1}[a-z]{2}[\\.]{1}[a-z]{2}" placeholder ="email-id" autocomplete="off" id="mail"/></td></tr>
 </table>
 <div align="right"><input type="button" class="nextButton" value="<<" onclick="toTab('tabBasic')"><input type="button" class="nextButton" value=">>" onclick="toTab('tabAcademics')"></div>
 </div>
@@ -314,7 +314,7 @@ Calculate average GPA by averaging the GPAs you have till now, giving equal weig
 <br><input type="text" size="10" placeholder="District" autocomplete="off">
 <br><input type="text" size="11" placeholder="State" autocomplete="off">
 <br><input type="text" size="6" placeholder="Pin" autocomplete="off">
-<br><input type="button" value="Done" onclick="hideCorresAddress()">
+<div><input type="button" value="Done" onclick="hideCorresAddress()"></div>
 </div>
 
 <br><br>
