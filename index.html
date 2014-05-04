@@ -54,9 +54,17 @@ $( '#dialog' ).dialog({ autoOpen: true, show:'slow' });
 function showAddress(){
 $( '#residAddress' ).dialog({ autoOpen: true, show:'slow' });
 }
+function hideAddress(){
+$( '#residAddress' ).dialog("close");
+//process address
+}
 
 function showCorresAddress(){
 $( '#corresAddress' ).dialog({ autoOpen: true, show:'slow' });
+}
+function hideCorresAddress(){
+$( '#corresAddress' ).dialog("close");
+//process address
 }
 
 function toTab(x){
@@ -186,8 +194,8 @@ Stream</td><td><select id="stream" name="--Stream--">
 
 <div id="tabs-4">
 <table align="center">
-<tr><td>Residential</td><td><input type="button" onclick="showAddress()" value="Edit.."></td></tr>
-<tr><td>Correspondence</td><td><input type="checkbox" onclick="toggleCorrespondence();">Same as residential address<br><input type="button" onclick="showCorresAddress()" value="Edit.." id="editCorresAddress"></td></tr>
+<tr><td>Residential</td><td><textarea id="add1" readonly></textarea><br><input type="button" onclick="showAddress()" value="Edit.."></td></tr>
+<tr><td>Correspondence</td><td><textarea id="add2" readonly></textarea><br><input type="checkbox" onclick="toggleCorrespondence();">Same as residential address<br><input type="button" onclick="showCorresAddress()" value="Edit.." id="editCorresAddress"></td></tr>
 <tr><td>Contact number</td><td><input type="tel" name="ph"  placeholder ="Phone number" autocomplete="off" size="10" id="ph"/></td></tr>
 <tr><td>email-id</td><td><input type="email" name="email"  placeholder ="email-id" autocomplete="off" id="mail"/></td></tr>
 </table>
@@ -295,6 +303,7 @@ Calculate average GPA by averaging the GPAs you have till now, giving equal weig
 <br><input type="text" size="10" placeholder="District" autocomplete="off">
 <br><input type="text" size="11" placeholder="State" autocomplete="off">
 <br><input type="text" size="6" placeholder="Pin" autocomplete="off">
+<br><input type="button" value="Done" onclick="hideAddress()">
 </div>
 
 <div id="corresAddress" title="Correspondence address">
@@ -305,6 +314,7 @@ Calculate average GPA by averaging the GPAs you have till now, giving equal weig
 <br><input type="text" size="10" placeholder="District" autocomplete="off">
 <br><input type="text" size="11" placeholder="State" autocomplete="off">
 <br><input type="text" size="6" placeholder="Pin" autocomplete="off">
+<br><input type="button" value="Done" onclick="hideCorresAddress()">
 </div>
 
 <br><br>
