@@ -28,6 +28,8 @@ include('../lib/opendb.php');
 $roll=$_POST['r'];
 $mail=$_POST['m'];
 $name=$_POST['n'];
+$middleName=$_POST['mn'];
+$surname=$_POST['sn'];
 $sex=$_POST['sx'];
 $stream=$_POST['str'];
 $dob=$_POST['dob'];
@@ -73,7 +75,7 @@ $tw=$_POST['tw'];
 $eid='0';
 
 //entity
-$query="INSERT INTO entity(mail, uniroll, name) VALUES('$mail','$roll','$name')";
+$query="INSERT INTO entity(mail, uniroll, name, middleName, surname) VALUES('$mail','$roll','$name','$middleName','$surname')";
 $res=mysql_query($query);
 if($res){
 $eid=mysql_insert_id();

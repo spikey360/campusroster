@@ -29,6 +29,9 @@ roll=document.getElementById('roll').value;
 if(!flashDetails(roll,'Basic','University roll','tabBasic')) return;
 name=document.getElementById('name').value;
 if(!flashDetails(name,'Basic','Name','tabBasic')) return;
+middleName=document.getElementById('middleName').value;
+surname=document.getElementById('surname').value;
+if(!flashDetails(surname,'Basic','Surname','tabBasic')) return;
 stream=document.getElementById('stream');
 sexFemale=document.getElementById('female');
 dob=document.getElementById('dob').value;
@@ -121,7 +124,7 @@ document.getElementById('status').innerHTML="Submitting...";
 $.ajax({
 	type: "POST",
 	url: "tools/submit.php",
-	data:{r: roll, m: mail, n: name, sx: sex, str: strm, dob: dob, p10: p10, b10: b10, y10: y10, p12: p12, b12: b12, y12: y12, pDip: pDip, bDip: bDip, yDip: yDip, cat: cat, rWB: rWB, rJEL: rJEL, add1: add1, add2: add2, ph: ph, pb: pb,cb: cb, p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, cgpa: cgpa, avg: avg, td: td, tw: tw}
+	data:{r: roll, m: mail, n: name, mn: middleName, sn: surname, sx: sex, str: strm, dob: dob, p10: p10, b10: b10, y10: y10, p12: p12, b12: b12, y12: y12, pDip: pDip, bDip: bDip, yDip: yDip, cat: cat, rWB: rWB, rJEL: rJEL, add1: add1, add2: add2, ph: ph, pb: pb,cb: cb, p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, cgpa: cgpa, avg: avg, td: td, tw: tw}
 	}
 ).done(
 	function(x){
